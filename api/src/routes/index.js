@@ -10,5 +10,9 @@ const router = Router();
 router.use('/dogs', Dogs);
 router.use('/temperament', Temperament);
 
+router.get("/", (req, res) => {
+    res.send("Alto! No te vayas sin adoptar tu perro favorito");
+  });
+
 
 module.exports = router;
