@@ -38,6 +38,8 @@ Raza.belongsToMany(Temperamento, {through: "raza_temperamento"});
 Temperamento.belongsToMany(Raza, {through: "raza_temperamento"});
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+  Raza,
+  Temperamento,
+  // ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };

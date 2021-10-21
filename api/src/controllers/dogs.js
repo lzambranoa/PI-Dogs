@@ -3,34 +3,26 @@ const { v4: uuidv4 }  = require('uuid');
 const { DogsUrl } = require('../../constants');
 const axios = require('axios'); 
 
-function getDogs(req, res, next){
 
-}
+const addDogs = (req, res, next) => {
 
-function addDogs(req, res, next){
-    const {
-       name,
-       height,
-       weight,
-       image,
-       life_span     
-    } = req.body;
+    const {name, height, weight, image, life_span, temperamento} = req.body;
 
     let newDog = {
         id: uuidv4(),
-        nombre: name,
-        altura: height,
-        peso: weight,
-        imagen: image,
-        tiempoVida: life_span
+        name: name,
+        height: height,
+        weight: weight,
+        image: image,
+        life_span,
     }
 
-    
-    return Raza.create(newDog)
-        .then((dog) => {
-            res.send({...dog})
+    Raza.create(newDog)
+        .then((raza) => {
+            raza.addTemperamento(temperamento);
+            res.send({...newDog, temperamento})
         })
-        .catch((error) => next(error));
+        .catch((error) => next(error))
 }
 
 module.exports = {
