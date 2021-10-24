@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const { addDogs } = require("../controllers/dogs");
+const { addDogs, getDogs } = require("../controllers/dogs");
 
 const router = Router();
 
-router.get("/");
+router.get("/", getDogs);
 router.get("");
 router.get("/:idRaza");
 router.post("/", addDogs);
